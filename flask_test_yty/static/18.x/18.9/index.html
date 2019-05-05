@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="yty-tom">
+<head>
+    <meta charset="UTF-8">
+    <title>18.1</title>
+    <style>
+        .liked{
+            background: #ff4e87;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <like></like>
+</div>
+<template id="like-component-tpl">
+    <button :class="{liked: liked}" @click="toggle_like()">
+    点赞{{like_count}}
+    </button>
+
+</template>
+<script src="../lib/Vue.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
