@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="yty-tom">
+<head>
+    <meta charset="UTF-8">
+    <title>18.1</title>
+</head>
+<body>
+<div id="app">
+    <table border="1">
+        <thead>
+        <th>学科</th>
+        <th>分数</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>math:</td>
+            <td><input type="text" v-model.number="math"></td>
+        </tr>
+        <tr>
+            <td>english:</td>
+            <td><input type="text" v-model.number="english"></td>
+        </tr>
+        <tr>
+            <td>chinese:</td>
+            <td><input type="text" v-model.number="chinese"></td>
+        </tr>
+        <tr>
+            <td>totle:</td>
+            <td>{{math+english+chinese}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<script src="../lib/Vue.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

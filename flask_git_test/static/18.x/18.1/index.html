@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="yty-tom">
+<head>
+    <meta charset="UTF-8">
+    <title>18.1</title>
+</head>
+<body>
+
+    <p>user:{{username}}</p>
+    <p>PAAAWORD:{{passwd}}</p>
+<div id="app">
+    <div>
+        <input type="text" v-model="name">
+        <span v-if="name">你的名字是：{{name}}</span>
+    </div>
+    <div>
+        <input type="text" v-model="age">
+        <span v-if="age">你的年龄是：{{age}}</span>
+    </div>
+
+    <div>
+        <input type="text" v-model="sex">
+        <span v-if="sex">你的性别是：{{sex}}</span>
+        <!--<span v-if="show">你的性别是：{{sex}}</span>-->
+    </div>
+</div>
+<script src="/static/lib/Vue.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
