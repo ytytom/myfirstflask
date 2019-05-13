@@ -2,16 +2,21 @@
 from flask import Flask, make_response, request, session, render_template, redirect
 import paramiko
 import os
-
+from flask_restful import Api,Resource
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
-
+api = Api(app)
+CORS(app, supports_credentials=True)
 
 @app.route('/')
 def home():
     # session['username'] = 'emergency'
     return '登录界面'
+
+
+
 
 @app.route('/index')
 def index():
@@ -49,26 +54,16 @@ def login():
             return redirect('login')
 
 
+#
+# @app.route('/emergency',methods=['GRT'])
+# def drillnumGet():
+#     pass
+class Emergeny(Resource):
+    def get(self,drillnum):
+        if drillnum == '001':
+            return emergency_do(cmd)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+api.add_resource(Emergeny,'/emergency/<drillnum>')
 
 
 
@@ -118,5 +113,5 @@ cmd = "nco_sql -server CSLCOBJ_V -user root -password '' < /root/data1.sql"
 
 
 if __name__ == '__main__':
-    # CORS(app,support_credentials=True)
+    CORS(app,support_credentials=True)
     app.run(debug=True,port=5000)

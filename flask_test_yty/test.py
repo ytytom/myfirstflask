@@ -8,7 +8,7 @@ from flask import render_template
 from flask import request
 import datetime
 from flask import Flask, make_response, request, session, render_template, redirect
-
+from flask_moment import Moment
 
 import json
 app = Flask(__name__)
@@ -17,7 +17,7 @@ api = Api(app)
 CORS(app, supports_credentials=True)
 app.config['SECRET_KEY']='aixieshaxiesha,yuefuzayuehao%$'
 todos = {}
-
+moment = Moment(app)
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -80,12 +80,43 @@ api.add_resource(TodoSimple,'/test_Api1/<string:todo_id>')
 #     def get(self,yuan):
 #         return
 
-#请求当前时间的API
-class Timenow(Resource):
-    def get(self):
-        return {'time':str(datetime.datetime.now())}
+@app.route('/time')
+def gettime():
+    # return u'欢迎来到首页'
+    time = request.form.get('data1')
+    print request.method
+    # print request.args
+    # print request.form
+    print request.data
+    print request.json
+    # print (request)
+    print time
+    return u'欢迎来到首页'
+    # if request.method == 'GET':
+    #     time = request.args.get('data1')
+    #     print time
 
-api.add_resource(Timenow,'/time')
+
+
+#请求当前时间的API
+# class Timenow(Resource):
+#     def get(self):
+        # time = time.replace('%',' ')
+        # return datetime.datetime.utcnow()
+
+
+        # time = request.date.get('date1')
+        # print time
+        # return time
+        #
+        # print time + 'this is time'
+        # time = time.strip()[4:25]
+        # print time + 'this is time do something'
+        # Daojishi = datetime.datetime.now()-datetime.datetime.strptime(time, '%d-%m-%Y %H:%M:%S')
+        # print Daojishi + 'this is Daojishi'
+        # return Daojishi
+
+# api.add_resource(Timenow,'/time/')
 
 
 
@@ -217,6 +248,11 @@ def show_post(post_id):
     # show the post with the given id, the id is an integer
     return 'Post %d' % post_id
 
+@app.route('/post01')
+def show_post01(post_id,test):
+    # show the post with the given id, the id is an integer
+    return 'Post %d' % post_id
+
 
 
 
@@ -224,7 +260,7 @@ def show_post(post_id):
 
 if __name__ == '__main__':
     CORS(app,support_credentials=True)
-    app.run(debug=True,port=5000)
+    app.run(debug=True,port=5001)
 
 
 

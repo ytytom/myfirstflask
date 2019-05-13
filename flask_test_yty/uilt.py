@@ -4,43 +4,15 @@ import paramiko
 import os
 from flask_restful import Api,Resource
 from flask_cors import CORS
+# from apscheduler.schedulers.blocking import BlockingScheduler
 from flask_apscheduler import APScheduler
-import datetime
+
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 api = Api(app)
 CORS(app, supports_credentials=True)
-app.config['SCHEDULER_API_ENABLED'] = True
-
-
-scheduler = APScheduler()
-scheduler.init_app(app)
-scheduler.start()
-
-# class Config(object):
-#     JOBS = [
-#         {
-#             'id':'job1',
-#             'func':'draw:test_data',
-#             'args':'',
-#             'run_date':'',
-#         }
-#     ]
-
-
-
-# def test_data():
-#
-
-
-
-
-def test(x):
-    print datetime.datetime.now() + x
-
-
-
 
 @app.route('/')
 def home():
@@ -118,9 +90,7 @@ def emergency_do(cmd):
     ssh.close()
 
 cmd = "nco_sql -server CSLCOBJ_V -user root -password '' < /root/data1.sql"
-# emergency_do(cmd)
 
-# emergency_do(1)
 
 
 
